@@ -287,7 +287,7 @@ SIT：在单元测试和集成测试之后进行的系统测试
 | 各部门对接缓慢                               | 规划里程碑                                                   |
 | bug修复不及时导致上线延期                    | 咨询开发里程碑，规划好时间                                   |
 
-## 三、接口API自动化理论
+## 三、接口API测试理论
 
 ### 3.1  接口测试流程
 
@@ -472,6 +472,29 @@ Fiddler其实就是客户端和服务器之间起到了一个代理的作用，�
 4. 排查配置：检查服务器的配置参数，如内存、CPU使用情况、数据库连接配置、中间件配置等，看是否存在配置不合理或资源不足导致错误
 5. 代码检查：针对可能出错的代码模块，进行代码审查，检查是否存在逻辑错误、空指针异常、数据库事务问题等
 6. 逐步修复验证：根据排查结果进行修复，修复后在测试环境验证问题是否解决，然后在生产环境进行灰度发布验证，确认问题彻底解决
+
+### 3.18  常见的请求头参数
+
+1. 通用参数 
+   - Host: 指定目标服务器的地址（域名或 IP），是 HTTP/1.1 必须包含的参数。 
+   - User-Agent: 标识客户端的类型（如浏览器、操作系统等），便于服务器优化响应内容。 
+   - Accept: 指定客户端可接受的响应数据类型（如 text/html, application/json）。 
+   - Accept-Language: 指定客户端希望的语言（如 zh-CN, en-US）。 
+   - Accept-Encoding: 指定客户端支持的压缩编码（如 gzip, deflate）。 
+   - Connection: 控制连接类型（如 keep-alive 或 close）。
+2. 认证与安全 
+   - Authorization: 用于传递认证信息（如 Bearer token 或 Basic 认证）。 
+   - Cookie: 传递会话信息或用户状态。 
+   - Referer: 指定请求来源页面的 URL，便于服务器跟踪流量来源。 
+   - Origin: 指定请求的源，用于跨域资源共享（CORS）验证。
+3. 实体相关 
+   - Content-Type: 指定请求体的数据格式（如 application/json, multipart/form-data）。 
+   - Content-Length: 指定请求体的字节长度。 
+   - Cache-Control: 控制缓存行为（如 no-cache, max-age=3600）。
+4. 其他常用参数 
+   - If-Modified-Since: 用于条件请求，只有资源在指定时间后被修改才会返回。 
+   - Range: 请求部分资源（如文件的某一段）。 
+   - X-Requested-With: 通常用于标识 AJAX 请求（如 XMLHttpRequest）。
 
 ## 四、接口自动化与CI/CD（JMeter+Ant+Jenkins）
 
